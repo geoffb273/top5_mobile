@@ -1,0 +1,46 @@
+{
+  "expo": {
+    "name": "top5",
+    "slug": "top5",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.geoffb273.top5"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.geoffb273.top5"
+    },
+    "plugins": [
+      [
+        "react-native-auth0",
+        {
+          "domain": "dev-diqc1zegzd3k2cdi.us.auth0.com"
+        }
+      ]
+    ],
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "2027aad3-8cb6-4dd3-a46a-406440dd2ed4"
+      }
+    },
+    "owner": "geoffb273"
+  }
+}
