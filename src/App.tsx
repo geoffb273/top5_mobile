@@ -1,20 +1,32 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { Auth0Provider } from 'react-native-auth0';
+import { AUTH0_CLIENT_ID, AUTH0_DOMAIN } from './constants/configConstants';
+import { AuthProvider } from './provider/AuthProvider';
+import { ApolloProvider, gql } from '@apollo/client';
+import { graphqlClient } from './graphql/client';
+import { NavigationContainer } from '@react-navigation/native';
+import { RootNavigator } from './navigators/RootNavigator';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+
+gql`
+  query GetUser($id: String!) {
+    getUser(id: $id) {
+      id
+    }
+  }
+`;
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <ApolloProvider client={graphqlClient}>
+        <Auth0Provider clientId={AUTH0_CLIENT_ID} domain={AUTH0_DOMAIN}>
+          <AuthProvider>
+            <SafeAreaProvider>
+              <RootNavigator />
+            </SafeAreaProvider>
+          </AuthProvider>
+        </Auth0Provider>
+      </ApolloProvider>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
